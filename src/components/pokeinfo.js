@@ -1,12 +1,17 @@
 // Write your Character component here
 import React from "react"
+import styled from "styled-components";
+
+const PokeInfoContainer = styled.div`
+  width: 48%;
+`
 
 const PokeInfo = (props) => {
   const {pokeData} = props;
   if (pokeData) {
     console.log(pokeData)
     return (
-      <div className="info-container">
+      <PokeInfoContainer>
         <p className="name">{pokeData.name}</p>
         <img className="sprite" src={pokeData.sprites.front_default} alt={pokeData.name + " sprite"}/>
         <div className="stats">
@@ -16,7 +21,7 @@ const PokeInfo = (props) => {
             return <span key={idx}>{el.type.name} </span>
           })}</p>
         </div>
-      </div>
+      </PokeInfoContainer>
     )
   } else return <div>Loading...</div>
 }
