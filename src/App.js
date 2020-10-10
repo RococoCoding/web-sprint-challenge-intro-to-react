@@ -35,14 +35,15 @@ const App = () => {
   }
   function pageBack() {
     setOffset(offset - 10);
-    setPage(page + 2);
+    setPage(page - 1);
   }
 
   useEffect(() => {
     if (document.getElementById(`${poke}`)) {
-      document.getElementById(`${poke}`).classList.toggle("selected");
+      let element = document.getElementById(`${poke}`);
+      element.classList.toggle("selected");
       return () => {
-        document.getElementById(`${poke}`).classList.toggle("selected");
+        element.classList.toggle("selected");
       }
     }
   }, [poke]);

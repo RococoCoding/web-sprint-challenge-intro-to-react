@@ -24,7 +24,6 @@ const Stats = styled.div`
 const PokeInfo = (props) => {
   const {pokeData} = props;
   if (pokeData) {
-    console.log(pokeData)
     return (
       <PokeInfoContainer>
         <Name>{pokeData.name}</Name>
