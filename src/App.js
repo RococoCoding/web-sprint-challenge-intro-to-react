@@ -30,13 +30,13 @@ const App = () => {
   }
 
   function pageFwd() {
-    if (page + 1 < 90) {
+    if (page + 1 < 91) {
       setOffset(offset + 10);
       setPage(page + 1);
     }
   }
   function pageBack() {
-    if (page-1 >= 0) {
+    if (page-1 > 0) {
       setOffset(offset - 10);
       setPage(page - 1);
     }

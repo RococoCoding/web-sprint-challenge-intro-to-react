@@ -18,6 +18,9 @@ const Button = styled.div`
   width: min-content;
   padding: 1%;
   border: 1px solid black;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const Nav = (props) => {
