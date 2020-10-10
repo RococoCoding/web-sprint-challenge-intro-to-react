@@ -33,7 +33,7 @@ const PokeName = styled.div`
 `
 
 const PokeList = (props) => {
-  const {list, onclick, fwd, back, page, data} = props;
+  const {list, onclick, fwd, back, page, selected} = props;
   if (list) {
     return (
       <PokeListContainer>
@@ -47,7 +47,7 @@ const PokeList = (props) => {
           let num = "00" + urlArray[6];
           let strNum = num.slice(-3);
           return (
-            <Entry key={"div" + idx} id={el.name} className="entry">
+            <Entry key={"div" + idx} id={el.name} className={el.name === selected ? "selected": ""}>
               <Pokeball src="pokeball.png"></Pokeball>
               <PokeNum key={idx}>{strNum}</PokeNum>
               <PokeName key={el.name} onClick={()=>onclick(el.name)}>{el.name}</PokeName>

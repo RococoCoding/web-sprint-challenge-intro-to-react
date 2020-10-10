@@ -35,17 +35,18 @@ const App = () => {
   }
   function pageBack() {
     setOffset(offset - 10);
-    setPage(page + 2);
+    setPage(page - 1);
   }
 
-  useEffect(() => {
-    if (document.getElementById(`${poke}`)) {
-      document.getElementById(`${poke}`).classList.toggle("selected");
-      return () => {
-        document.getElementById(`${poke}`).classList.toggle("selected");
-      }
-    }
-  }, [poke]);
+  // useEffect(() => {
+  //   if (document.getElementById(`${poke}`)) {
+  //     let element = document.getElementById(`${poke}`);
+  //     element.classList.toggle("selected");
+  //     return () => {
+  //       element.classList.toggle("selected");
+  //     }
+  //   }
+  // }, [poke]);
 
   useEffect(()=>{
     const getData = () => {
@@ -77,6 +78,7 @@ const App = () => {
           fwd={pageFwd}
           back={pageBack}
           page={page}
+          selected={poke}
         />
       </PokeContainer>
     </div>
