@@ -33,7 +33,7 @@ const PokeInfo = (props) => {
           <p>Height: {pokeData.height}</p>
           <p>Weight: {pokeData.weight}</p>
           <p>Types: {pokeData.types.map((el, idx, arr) => {
-            if (idx === arr.length-1) {
+            if (idx === arr.length-1) { //last element doesn't need a comma after
               return <span key={idx}>{el.type.name}</span>
             }
             return <span key={idx}>{el.type.name}, </span>

@@ -20,12 +20,12 @@ const PokeContainer = styled.div`
 
 const App = () => {
   const [pokeList, setPokeList] = useState("");
-  const [poke, setPoke] = useState("bulbasaur");
-  const [pokeData, setPokeData] = useState(null);
-  const [offset, setOffset] = useState(0);
-  const [page, setPage] = useState(1);
+  const [poke, setPoke] = useState("bulbasaur"); //name only of selected pokemon
+  const [pokeData, setPokeData] = useState(null); //selected pokemon's data
+  const [offset, setOffset] = useState(0); //offset for paging through api
+  const [page, setPage] = useState(1); //current page number
 
-  function selectPoke(selected) {
+  function selectPoke(selected) { 
     setPoke(selected);
   }
 
@@ -35,6 +35,7 @@ const App = () => {
       setPage(page + 1);
     }
   }
+
   function pageBack() {
     if (page-1 > 0) {
       setOffset(offset - 10);
@@ -54,7 +55,12 @@ const App = () => {
   useEffect(()=>{
     const getData = () => {
       axios.get(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`)
-        .then(res => setPokeList(res.data.results))
+        .then(res => setPokeList(res.data.results.filter(el => {
+          let id = el.url.split("/");
+            if (Number(id[6]) < 900) { //no pokemon between 893 and 1000?? pokemon after 1000 have no back sprites so img is broken, also need to change slice in pokelist.js, mapping through the list to get id #
+              return true;
+            }
+        })))
         .catch(err => alert("+++OUT OF CHEESE+++"));
     }
     getData();
@@ -68,7 +74,7 @@ const App = () => {
         <PokeInfo pokeData={pokeData}/>
         <PokeList 
           list={pokeList}
-          onclick={selectPoke}
+          selectPoke={selectPoke}
           fwd={pageFwd}
           back={pageBack}
           page={page}
