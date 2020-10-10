@@ -19,17 +19,24 @@ const Pokeball = styled.img`
   width: 17%;
   background-color: ${props => props.theme.red};
   padding: 2% 3%;
-`
+  background-clip:  border-box;
+ `
 
 const PokeNum = styled.div`
   width: max-content;
   padding: 6% 2% 5% 8%;
+  &:hover {
+    cursor: pointer;
+  }
 `
 const PokeName = styled.div`
   text-transform: capitalize;
   padding: 6% 2%;
   text-align: center;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const PokeList = (props) => {
@@ -47,10 +54,10 @@ const PokeList = (props) => {
           let num = "00" + urlArray[6];
           let strNum = num.slice(-3);
           return (
-            <Entry key={"div" + idx} id={el.name} className={el.name === selected ? "selected": ""}>
+            <Entry key={"div" + idx} >
               <Pokeball src="pokeball.png"></Pokeball>
-              <PokeNum key={idx}>{strNum}</PokeNum>
-              <PokeName key={el.name} onClick={()=>onclick(el.name)}>{el.name}</PokeName>
+              <PokeNum key={idx} onClick={()=>onclick(el.name)} className={el.name === selected ? "selected": ""}>{strNum}</PokeNum>
+              <PokeName key={el.name} onClick={()=>onclick(el.name)} className={el.name === selected ? "selected-name": ""}>{el.name}</PokeName>
             </Entry>
           )
         })}

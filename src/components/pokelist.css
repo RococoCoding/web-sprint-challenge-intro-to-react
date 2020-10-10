@@ -1,3 +1,9 @@
 .selected {
-  border: 2px solid red;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+}
+.selected-name {
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  border-right: 2px solid red;
 }
