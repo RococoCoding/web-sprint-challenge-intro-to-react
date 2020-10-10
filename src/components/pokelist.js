@@ -40,7 +40,7 @@ const PokeName = styled.div`
 `
 
 const PokeList = (props) => {
-  const {list, onclick, fwd, back, page, selected} = props;
+  const {list, selectPoke, fwd, back, page, selected} = props;
   if (list) {
     return (
       <PokeListContainer>
@@ -50,14 +50,14 @@ const PokeList = (props) => {
           page={page}
         />
         {list.map((el, idx) => {
-          const urlArray = el.url.split("/");
+          const urlArray = el.url.split("/"); //getting id number from url since it's not provided in the list api 
           let num = "00" + urlArray[6];
           let strNum = num.slice(-3);
           return (
             <Entry key={"div" + idx} >
               <Pokeball src="pokeball.png"></Pokeball>
-              <PokeNum key={idx} onClick={()=>onclick(el.name)} className={el.name === selected ? "selected": ""}>{strNum}</PokeNum>
-              <PokeName key={el.name} onClick={()=>onclick(el.name)} className={el.name === selected ? "selected-name": ""}>{el.name}</PokeName>
+              <PokeNum key={idx} onClick={()=>selectPoke(el.name)} className={el.name === selected ? "selected": ""}>{strNum}</PokeNum>
+              <PokeName key={el.name} onClick={()=>selectPoke(el.name)} className={el.name === selected ? "selected-name": ""}>{el.name}</PokeName>
             </Entry>
           )
         })}
